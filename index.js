@@ -36,6 +36,8 @@ function trimPropertiesMutation(obj) {
    for (let index = 0; index < array1.length; ++index) {
    result[array1[index]] = array2[index];
    }
+   obj = result;
+   return obj;
 }
 
 /**
@@ -49,6 +51,11 @@ function trimPropertiesMutation(obj) {
 function findLargestInteger(integers) {
 
   // ✨ implement
+
+  const sortedObjects = integers.sort((a, b) => {
+    return b.integer - a.integer
+})
+return sortedObjects[0]
 }
 
 class Counter {

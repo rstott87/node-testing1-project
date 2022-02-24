@@ -9,26 +9,27 @@
 <body>
     <script>
 
-const myTest = {"   key1   ": " v1    ", "key2 ": "    v2", "    key3": "   v3"}
+const integers = [{ integer: 1 }, { integer: 3 }, { integer: 2 }]
 
-function trimProperties(obj) {
-    // ✨ implement
-   const array1 =  Object.keys(obj).map(k => k = typeof k == 'string' ? k.trim() : k)
+function findLargestInteger(integers) {
 
-   const array2 = Object.keys(obj).map(k => obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k])
+    const sortedObjects = integers.sort((a, b) => {
+    return b.integer - a.integer
+})
+return sortedObjects[0]
+// ✨ implement
+}
+
+//console.log(findLargestInteger(integers))
+
+
+console.log(findLargestInteger(integers))
+
 
    
-   const result = {};
-    for (let index = 0; index < array1.length; ++index) {
-    result[array1[index]] = array2[index];
-    }
-  return(result)
-    
-  }
-
-
-console.log(trimProperties(myTest))
-
+   // const highestNumber = integers.map(e =>e[Object.keys(e)[0]]).sort(function(a,b){return b-a})[0]
+   // const objectWithHighest = integers.map(e =>e[Object.keys(e)[highestNumber]])
+    //.sort((function(a, b){return b-a}))
     </script>
 </body>
 </html>
