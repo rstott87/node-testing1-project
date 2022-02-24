@@ -8,15 +8,12 @@
  */
 function trimProperties(obj) {
   // ✨ implement
-  const array1 =  Object.keys(obj).map(k => k = typeof k == 'string' ? k.trim() : k)
-  const array2 = Object.keys(obj).map(k => obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k])
-
-  const result = {};
-   for (let index = 0; index < array1.length; ++index) {
-   result[array1[index]] = array2[index];
-   }
- return(result)
+  let result = {}
+  for (let prop in obj) {
+      result[prop] = obj[prop].trim()
   }
+  return result
+}
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -29,15 +26,11 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
-  const array1 =  Object.keys(obj).map(k => k = typeof k == 'string' ? k.trim() : k)
-  const array2 = Object.keys(obj).map(k => obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k])
 
-  const result = {};
-   for (let index = 0; index < array1.length; ++index) {
-   result[array1[index]] = array2[index];
-   }
-   obj = result;
-   return obj;
+  for (let prop in obj) {
+      obj[prop] = obj[prop].trim()
+  }
+  return obj
 }
 
 /**
@@ -49,14 +42,15 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
+    let result = integers[0].integer
+    for (let idx=1; idx<integers.length; idx++) {
+      if (integers[idx].integer > result) {
+          result = integers[idx].integer
+      }
+    }
+    return result
+  }
 
-  // ✨ implement
-
-  const sortedObjects = integers.sort((a, b) => {
-    return b.integer - a.integer
-})
-return sortedObjects[0]
-}
 
 class Counter {
   /**
@@ -65,6 +59,7 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.initialNumber=initialNumber;
   }
 
   /**
@@ -81,8 +76,15 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    const numbersArray = []
+    for (let i=2; i>=0; i--){
+      this.initialNumber --
+      numbersArray.push(i)
+    }
+    return this.initialNumber
   }
 }
+
 
 class Seasons {
   /**
@@ -90,6 +92,7 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.seasons = ["summer","fall","winter","spring"]
   }
 
   /**
@@ -106,7 +109,10 @@ class Seasons {
    */
   next() {
     // ✨ implement
-  }
+      for (let i=0; i<=4; i++){
+          console.log(this.seasons[i])
+      }
+    }
 }
 
 class Car {
@@ -116,7 +122,7 @@ class Car {
    * @param {number} tankSize - capacity of the gas tank in gallons
    * @param {number} mpg - miles the car can drive per gallon of gas
    */
-  constructor(name, tankSize, mpg) {
+  constructor(name, tankSize) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed

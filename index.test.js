@@ -18,41 +18,56 @@ describe('[Exercise 1] trimProperties', () => {
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
   // test('[3] returns an object with the properties trimmed', () => {})
-  // test('[4] the object returned is the exact same one we passed in', () => {})
+   test('[4] the object returned is the exact same one we passed in', () => {   
+   const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+   const actual = utils.trimPropertiesMutation(input)
+   expect(actual).toEqual(input)})
   
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
    test('[5] returns the largest number in an array of objects { integer: 2 }', () => {
-    const input = [{ integer: 1 }, { integer: 3 }, { integer: 2 }]
-    const expected = { integer: 3 };
+    const input = [{ integer: 1 }, { integer: 3 }, { integer: 2 }] 
     const actual = utils.findLargestInteger(input)
-    expect(actual).toEqual(expected)
+    expect(actual).toBe(3)
    })
 })
 
-// describe('[Exercise 4] Counter', () => {
-//   let counter
-//   beforeEach(() => {
-//     counter = new utils.Counter(3) // each test must start with a fresh couter
-//   })
-//   // test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {})
-//   // test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {})
-//   // test('[8] the count eventually reaches zero but does not go below zero', () => {})
-// })
+describe('[Exercise 4] Counter', () => {
+  let counter;
+  beforeEach(() => {
+    counter = new utils.Counter(3) // each test must start with a fresh couter
+  })
+  test('[6] the FIRST CALL of counter.countDown returns the initial count', () => { 
+    expect(counter).toHaveProperty('initialNumber');
+    expect(counter.countDown).toBeInstanceOf(Function);
+    expect(counter.initialNumber).toBe(3);
+    
+  })
+  test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
+    expect(counter.initialNumber-1).toBe(2); 
+  })
 
-// describe('[Exercise 5] Seasons', () => {
-//   let seasons
-//   beforeEach(() => {
-//     seasons = new utils.Seasons() // each test must start with fresh seasons
-//   })
-//   // test('[9] the FIRST call of seasons.next returns "summer"', () => {})
-//   // test('[10] the SECOND call of seasons.next returns "fall"', () => {})
-//   // test('[11] the THIRD call of seasons.next returns "winter"', () => {})
-//   // test('[12] the FOURTH call of seasons.next returns "spring"', () => {})
-//   // test('[13] the FIFTH call of seasons.next returns again "summer"', () => {})
-//   // test('[14] the 40th call of seasons.next returns "spring"', () => {})
-// })
+  test('[8] the count eventually reaches zero but does not go below zero', () => {
+      counter.countDown(3);
+      expect(counter.initialNumber).toBe(0);
+  })
+ })
+
+describe('[Exercise 5] Seasons', () => {
+  let seasons
+  beforeEach(() => {
+    seasons = new utils.Seasons() // each test must start with fresh seasons
+  })
+  test('[9] the FIRST call of seasons.next returns "summer"', () => {
+    
+  })
+  test('[10] the SECOND call of seasons.next returns "fall"', () => {})
+  test('[11] the THIRD call of seasons.next returns "winter"', () => {})
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {})
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {})
+  test('[14] the 40th call of seasons.next returns "spring"', () => {})
+})
 
 // describe('[Exercise 6] Car', () => {
 //   let focus
