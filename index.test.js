@@ -117,10 +117,21 @@ describe('[Exercise 6] Car', () => {
     expect(focus.odometer).toBe(1500)
 
   })
-  test('[18] adding fuel to a full tank has no effect', () => {})
+  test('[18] adding fuel to a full tank has no effect', () => {
+    focus.refuel(2000000)
+    focus.drive(10000)
+    expect(focus.odometer).toBe(600)
+  })
 })
 
-// describe('[Exercise 7] isEvenNumberAsync', () => {
-//   // test('[19] resolves true if passed an even number', () => {})
-//   // test('[20] resolves false if passed an odd number', () => {})
-// })
+describe('[Exercise 7] isEvenNumberAsync', () => {
+  test('[19] resolves true if passed an even number', async() => {
+    const result = await utils.isEvenNumberAsync(2)
+    expect(result).toBe(true)
+  })
+  test('[20] resolves false if passed an odd number', async () => {
+    const result = await utils.isEvenNumberAsync(3)
+    expect(result).toBe(false)
+
+  })
+})
