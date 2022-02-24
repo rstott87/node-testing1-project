@@ -51,7 +51,6 @@ function findLargestInteger(integers) {
     return result
   }
 
-
 class Counter {
   /**
    * [Exercise 4A] Counter creates a counter
@@ -59,7 +58,7 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
-    this.initialNumber=initialNumber;
+    this.count=initialNumber;
   }
 
   /**
@@ -76,14 +75,12 @@ class Counter {
    */
   countDown() {
     // ✨ implement
-    const numbersArray = []
-    for (let i=2; i>=0; i--){
-      this.initialNumber --
-      numbersArray.push(i)
+     if (this.count > 0) {
+      return this.count--
     }
-    return this.initialNumber
-  }
-}
+    return this.count
+  } 
+} //solution 31:00
 
 
 class Seasons {
@@ -93,6 +90,7 @@ class Seasons {
   constructor() {
     // ✨ initialize whatever properties are needed
     this.seasons = ["summer","fall","winter","spring"]
+    this.currentSeason = 0
   }
 
   /**
@@ -109,9 +107,13 @@ class Seasons {
    */
   next() {
     // ✨ implement
-      for (let i=0; i<=4; i++){
-          console.log(this.seasons[i])
-      }
+const result = this.seasons[this.currentSeason]
+    if (this.currentSeason === 3) {
+      this.currentSeason = 0 }
+    else {
+      ++this.currentSeason
+    }
+    return result
     }
 }
 
@@ -122,10 +124,12 @@ class Car {
    * @param {number} tankSize - capacity of the gas tank in gallons
    * @param {number} mpg - miles the car can drive per gallon of gas
    */
-  constructor(name, tankSize) {
+  constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    this.tankSize = tankSize
+    this.mpg = mpg // solution 56:00
   }
 
   /**
@@ -143,6 +147,15 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    const milesCanDrive = this.tank * this.mpg
+    if(distance <= milesCanDrive) {
+      this.odometer=this.odometer + distance
+      this.tank = this.tank - (distance/this.mpg)
+      return this.odometer
+    }
+    this.odometer = this.odometer + milesCanDrive
+    this.tank = 0;
+    return this.odometer //solution 1:08
   }
 
   /**
@@ -158,9 +171,15 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
-  }
-}
-
+      const gallonsThatFit = this.tankSize - this.tank
+      if (gallons <= gallonsThatFit) {
+        this.tank = this.tank + gallons 
+      } else {
+          this.tank=this.tankSize
+        }
+        return this.tank* this.mpg
+      }
+    }
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
  * @param {number} number - the number to test for evenness
