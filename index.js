@@ -8,7 +8,15 @@
  */
 function trimProperties(obj) {
   // ✨ implement
-}
+  const array1 =  Object.keys(obj).map(k => k = typeof k == 'string' ? k.trim() : k)
+  const array2 = Object.keys(obj).map(k => obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k])
+
+  const result = {};
+   for (let index = 0; index < array1.length; ++index) {
+   result[array1[index]] = array2[index];
+   }
+ return(result)
+  }
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -17,9 +25,17 @@ function trimProperties(obj) {
  *
  * EXAMPLE
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
+ * 
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  const array1 =  Object.keys(obj).map(k => k = typeof k == 'string' ? k.trim() : k)
+  const array2 = Object.keys(obj).map(k => obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k])
+
+  const result = {};
+   for (let index = 0; index < array1.length; ++index) {
+   result[array1[index]] = array2[index];
+   }
 }
 
 /**
@@ -31,6 +47,7 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
+
   // ✨ implement
 }
 
